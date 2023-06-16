@@ -101,6 +101,7 @@ const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
+const btnDarkMode = document.querySelector('.darkModeButton');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -109,6 +110,8 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+
+const logo = document.querySelector('.logo');
 
 
 
@@ -240,8 +243,39 @@ function resetTimer() {
 }
 
 
+function applyDarkMode() {
+    document.body.style.backgroundColor = '#1B1C20';
+    // document.body.style.backgroundColor = 'orangered';
+    document.body.style.color = '#f3f3f3';
+    logo.src = "images/icon.png"
+    document.querySelector('.login__input').style.color = '#1B1C20';
+    document.querySelector('.btn--sort').style.color = 'white';
+    document.querySelector('.balance__date').style.color = '#A1A1A1';
+}
 
-let currentAccount, timer;
+function applyLightMode() {
+    document.body.style.backgroundColor = '#f3f3f3';
+    document.body.style.color = '#444';
+    logo.src = "images/logo.png"
+    document.querySelector('.btn--sort').style.color = 'black';
+    document.querySelector('.balance__date').style.color = '#888';
+}
+
+
+
+let currentAccount, timer, darkModeButton;
+
+
+btnDarkMode.addEventListener('change', function() {
+    darkModeButton = btnDarkMode.checked;
+    if (darkModeButton) {
+        applyDarkMode();
+    } else {
+        applyLightMode();
+    }
+
+});
+
 
 btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
