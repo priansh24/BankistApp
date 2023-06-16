@@ -280,7 +280,7 @@ btnDarkMode.addEventListener('change', function() {
 btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
     currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
-    (currentAccount && Number(inputLoginPin.value) === currentAccount.pin) ? currentAccount = currentAccount: console.log('Wrong Credentials');
+    (currentAccount && Number(inputLoginPin.value) === currentAccount.pin) ? currentAccount = currentAccount: currentAccount = null;
     labelWelcome.textContent = `Welcome Back, ${currentAccount.owner.split(' ')[0]}`;
     containerApp.style.opacity = 100;
     labelDate.textContent = displayDateTop(new Date());
